@@ -39,4 +39,5 @@ function updateTotal() {
     } else { total = subTotalAmount }
 
     document.getElementById('total-amount').innerText = total;
+    promoField.value = '';
 }
