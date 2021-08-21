@@ -22,90 +22,112 @@
 <body>
     <main>
         <div class="container mx-auto px-4 py-10 grid grid-cols-1 lg:grid-cols-2 gap-5 border-b-2 border-gray-500">
+            <!-- product image -->
             <div class="image-container">
                 <img src="img/mac.png">
             </div>
             <div class="configuration-container">
+                <!-- product name -->
                 <h1 class="text-3xl font-medium">
                     Customize you Blue 24-inch iMac with Apple M1 chip.
                 </h1>
+                <!-- product description -->
                 <div class="my-3 text-gray-600 text-md">
                     Apple M1 chip with 8-core CPU with 4 performance cores and 4 efficiency cores, 7-core GPU, and
                     16-core Neural Engine 8GB unified memory 256GB SSD storage Two Thunderbolt / USB 4 ports Magic Mouse
                     Magic Keyboard - US English
                 </div>
+                <!-- memory options -->
                 <div class="my-4">
                     <h4 class="font-medium text-lg">Memory</h4>
-                    <div id="memory" class="options">
-                        <button id="0"
-                            class="selected p-3 m-2 border border-gray-400 rounded shadow-lg hover:bg-gray-700 hover:text-white">8GB
+                    <div>
+                        <button
+                            class="option selected p-3 m-2 border border-gray-400 rounded shadow-lg hover:bg-gray-700 hover:text-white"
+                            onclick="updateCost('memory',0)">8GB
                             unified
                             memory</button>
-                        <button id="180"
-                            class="p-3 m-2 border border-gray-400 rounded shadow-lg hover:bg-gray-700 hover:text-white">16GB
+                        <button
+                            class="option p-3 m-2 border border-gray-400 rounded shadow-lg hover:bg-gray-700 hover:text-white"
+                            onclick="updateCost('memory',180)">16GB
                             unified
                             memory</button>
                     </div>
                 </div>
+                <!-- storage options -->
                 <div class="my-4">
                     <h4 class="font-medium text-lg">Storage</h4>
-                    <div id="storage" class="options">
-                        <button id="0"
-                            class="selected p-3 m-2 border border-gray-400 rounded shadow-lg hover:bg-gray-700 hover:text-white">256GB
+                    <div>
+                        <button
+                            class="option selected p-3 m-2 border border-gray-400 rounded shadow-lg hover:bg-gray-700 hover:text-white"
+                            onclick="updateCost('storage',0)">256GB
                             SSD storage</button>
-                        <button id="100"
-                            class="p-3 m-2 border border-gray-400 rounded shadow-lg hover:bg-gray-700 hover:text-white">512GB
+                        <button
+                            class="option p-3 m-2 border border-gray-400 rounded shadow-lg hover:bg-gray-700 hover:text-white"
+                            onclick="updateCost('storage',100)">512GB
                             SSD storage</button>
-                        <button id="180"
-                            class="p-3 m-2 border border-gray-400 rounded shadow-lg hover:bg-gray-700 hover:text-white">1TB
+                        <button
+                            class="option p-3 m-2 border border-gray-400 rounded shadow-lg hover:bg-gray-700 hover:text-white"
+                            onclick="updateCost('storage',180)">1TB
                             SSD storage</button>
                     </div>
                 </div>
+                <!-- deliver options -->
                 <div class="my-4">
                     <h4 class="font-medium text-lg">Choose your delivery option</h4>
-                    <div id="delivery" class="options">
-                        <button id="0"
-                            class="selected p-3 m-2 border border-gray-400 rounded shadow-lg hover:bg-gray-700 hover:text-white">Friday,
+                    <div>
+                        <button
+                            class="option selected p-3 m-2 border border-gray-400 rounded shadow-lg hover:bg-gray-700 hover:text-white"
+                            onclick="updateCost('delivery',0)">Friday,
                             Aug 25 FREE Prime Delivery</button>
-                        <button id="20"
-                            class="p-3 m-2 border border-gray-400 rounded shadow-lg hover:bg-gray-700 hover:text-white">Friday,
+                        <button
+                            class="option p-3 m-2 border border-gray-400 rounded shadow-lg hover:bg-gray-700 hover:text-white"
+                            onclick="updateCost('delivery',20)">Friday,
                             Aug 21 Delivery charge $20</button>
                     </div>
                 </div>
-                <div class="pricing-container mt-12 px-2">
+                <div class="mt-12 px-2">
+                    <!-- price table -->
                     <table class="price-table text-xl font-medium">
-                        <tr class="border-b border-gray-300">
-                            <td class="py-1.5">Best Price</td>
-                            <td class="py-1.5">$1299</td>
+                        <!-- fixed price -->
+                        <tr class="border-b border-gray-400">
+                            <td class="py-2">Best Price</td>
+                            <td class="py-2">$1299</td>
                         </tr>
-                        <tr class="border-b border-gray-300">
-                            <td class="py-1.5 pr-12">Extra Memory Cost</td>
-                            <td class="py-1.5">$<span id="extra-memory-cost" class="extra-cost">0</span></td>
+                        <!-- memory cost -->
+                        <tr class="border-b border-gray-400">
+                            <td class="py-2 pr-12">Extra Memory Cost</td>
+                            <td class="py-2">$<span id="memory-cost" class="extra-cost">0</span></td>
                         </tr>
-                        <tr class="border-b border-gray-300">
-                            <td class="py-1.5">Extra Storage Cost</td>
-                            <td class="py-1.5">$<span id="extra-storage-cost" class="extra-cost">0</span></td>
+                        <!-- storage cost -->
+                        <tr class="border-b border-gray-400">
+                            <td class="py-2">Extra Storage Cost</td>
+                            <td class="py-2">$<span id="storage-cost" class="extra-cost">0</span></td>
                         </tr>
-                        <tr class="border-b border-gray-700">
-                            <td class="py-1.5">Delivery charge</td>
-                            <td class="py-1.5">$<span id="extra-delivery-cost" class="extra-cost">0</span></td>
+                        <!-- delivery cost -->
+                        <tr class="border-b border-gray-900">
+                            <td class="py-2">Delivery charge</td>
+                            <td class="py-2">$<span id="delivery-cost" class="extra-cost">0</span></td>
                         </tr>
+                        <!-- subtotal -->
                         <tr>
-                            <td class="py-1.5">Total Price</td>
-                            <td class="py-1.5">$<span id="subTotal-price">1299</span></td>
+                            <td class="py-2">Total Price</td>
+                            <td class="py-2">$<span id="subTotal-price">1299</span></td>
                         </tr>
                     </table>
-                    <div class="my-6">
+                    <!-- promo code container start -->
+                    <div class="my-10">
                         <h6 class="text-xl font-medium">Add Promo Code</h6>
                         <div class="text-lg my-2">
-                            <input type="text" id="promo-input" class="border p-2 rounded"><input type="button"
-                                value="Apply" id="promo-submit"
-                                class="px-4 py-2 bg-red-500 text-white rounded cursor-pointer" onclick="updateTotal()">
+                            <input type="text" id="promo-input" class="border-2 border-red-300 p-2 rounded"><input
+                                type="button" value="Apply" id="promo-submit"
+                                class="px-4 py-2 bg-red-500 border-2 border-red-500 text-white rounded cursor-pointer"
+                                onclick="updateTotal()">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- total cost after checking promo code -->
         <div class="text-center font-bold text-4xl my-4 py-4">
             Total: $<span id="total-amount">1299</span>
         </div>

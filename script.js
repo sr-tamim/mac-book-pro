@@ -1,21 +1,22 @@
 
-const subTotalField = document.getElementById('subTotal-price');
+// change background color of selected button
+const allOptions = document.querySelectorAll('.option');
+for (const option of allOptions) {
+    option.addEventListener('click', function () {
+        // remove class from other selected element
+        option.parentNode.querySelector('.selected').classList.remove('selected');
+        // add class to the clicked element
+        option.classList.add('selected');
+    });
+}
 
-document.querySelectorAll('.options').forEach(function (element) {
-    element.addEventListener('click', function (event) {
-        if (event.target.localName == 'button') {
-            this.querySelector('.selected').classList.remove('selected');
-            event.target.classList.add('selected');
-
-            updateCost(this.id, event.target.id);
-        }
-    })
-})
+// update prices in price table
 function updateCost(product, extraCost) {
-    document.getElementById('extra-' + product + '-cost').innerText = extraCost;
+    document.getElementById(product + '-cost').innerText = extraCost;
     updateSubTotal();
 }
 
+// calculate total price of selected products
 function updateSubTotal() {
     const basePrice = 1299;
 
@@ -24,20 +25,20 @@ function updateSubTotal() {
     for (const value of extraPrices) {
         subTotal += parseFloat(value.innerText);
     }
-    subTotalField.innerText = subTotal;
+    document.getElementById('subTotal-price').innerText = subTotal;
     updateTotal();
 }
 
+// update total cost by checking promo code
 function updateTotal() {
     const promoField = document.getElementById('promo-input');
-    const subTotalAmount = parseFloat(subTotalField.innerText);
+    const subTotalAmount = document.getElementById('subTotal-price').innerText;
     let total;
 
     if (promoField.value == 'stevekaku') {
         const discount = subTotalAmount * 0.2;
         total = subTotalAmount - discount;
     } else { total = subTotalAmount }
-
     document.getElementById('total-amount').innerText = total;
     promoField.value = '';
 }
